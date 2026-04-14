@@ -12,14 +12,14 @@ class LinkedList
         }
         void insertAtHead(int data)
         {
-            Node* newNode = new Node();
+            Node* newNode = new Node(data);
             newNode->data = data;
             newNode->next = head;
             head = newNode;
         }
         void insertAtTail(int data)
         {
-            Node* newNode = new Node();
+            Node* newNode = new Node(data);
             Node* tempHead = head;
             newNode->data = data;
             if (head == nullptr)
@@ -110,5 +110,36 @@ class LinkedList
                 middleNode = middleNode->next;
             }
             return true;
+        }
+
+
+        // insertAtTail but sorted
+        void insertAtTailSorted(int data)
+        {
+            if (head == nullptr)
+            {
+                Node* tempNode = new Node(data);
+                head = tempNode;                
+            }
+            else
+            {
+                Node* tempHead = head;
+                Node* tempNode = new Node(data);
+                Node* prev = head;
+                while(tempHead->data <= data and tempHead->next != nullptr)
+                {
+                    prev = tempHead;
+                    tempHead = tempHead->next;
+                }
+                if(tempHead->next == nullptr) 
+                {
+                    tempHead->next = tempNode;
+                }
+                else
+                {
+                    prev->next = tempNode;
+                    tempNode->next = tempHead;
+                }
+            }
         }
 };
