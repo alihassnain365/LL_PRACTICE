@@ -79,44 +79,36 @@ class LinkedList
 
         bool isPalindrome()
         {
-            // finding the middle
-            Node* fast;
-            Node* slow;
-            slow = fast = head;
-            while (fast!=nullptr and fast->next !=nullptr)
+            Node* slow = head;
+            Node* fast = head;
+            while (fast != nullptr and fast->next != nullptr)
             {
                 slow = slow->next;
                 fast = fast->next->next;
             }
-            // slow is the middle
-            // now reversing starting from slow->next
+            Node* tempHead = head;
+            Node* middleNode = slow;
+            // reversing the second half of the linked list
+            Node* curr = middleNode->next;
             Node* prev = nullptr;
             Node* next = nullptr;
-            Node* current = slow->next;
-            while (current!=nullptr)
+            while (curr != nullptr)
             {
-                next = current->next;
-                current->next = prev;
-                prev = current;
-                current = next;
+                next = curr->next;
+                curr->next = prev;
+                prev = curr;
+                curr = next;
             }
-
-            // now camparing the LL at the left of slow with the Right of the slow
-            bool result = true;
-            while (true)
+            middleNode = prev;
+            while (tempHead->data != middleNode->data)
             {
-                Node* tempHead = head;
-                Node* afterSlow = slow->next;
-                while(tempHead != slow and afterSlow !=nullptr)
+                if (tempHead->data != middleNode->data)
                 {
-                    if(tempHead->data != afterSlow->data) 
-                    {
-                        result = false;
-                        break;
-                    }
+                    return false;
                 }
+                tempHead = tempHead->next;
+                middleNode = middleNode->next;
             }
-            
-            return result;
+            return true;
         }
 };
