@@ -80,7 +80,7 @@ class LinkedList
         bool isPalindrome()
         {
             // finding the middle
-            Node* fast ;
+            Node* fast;
             Node* slow;
             slow = fast = head;
             while (fast!=nullptr and fast->next !=nullptr)
@@ -96,9 +96,27 @@ class LinkedList
             while (current!=nullptr)
             {
                 next = current->next;
-                current->next
+                current->next = prev;
+                prev = current;
+                current = next;
+            }
+
+            // now camparing the LL at the left of slow with the Right of the slow
+            bool result = true;
+            while (true)
+            {
+                Node* tempHead = head;
+                Node* afterSlow = slow->next;
+                while(tempHead != slow and afterSlow !=nullptr)
+                {
+                    if(tempHead->data != afterSlow->data) 
+                    {
+                        result = false;
+                        break;
+                    }
+                }
             }
             
-
+            return result;
         }
 };

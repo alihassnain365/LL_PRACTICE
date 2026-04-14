@@ -1,18 +1,17 @@
-string infixToPrefix(string eq)
-// {
-//   string ouput = "";
-//     Stack st(100);
+LinkedList l1;
+//     l1.insertAtHead(10);
+//     l1.insertAtHead(20);
+//     l1.insertAtTail(30);
+//     l1.insertAtTail(40);
+//     l1.display();
 
-//     // reversing the string
-//     int j = eq.length();
-//     string temp;
-//     for (int i = 0; i<eq.length(); i++)
+//     cout<<endl;
+
+//    cout<<"Reveresed linkedList is: "<<endl;
+//     Node* newHead = l1.reverseList();
+//     while (newHead != nullptr)
 //     {
-//         temp[i] = eq[j--];
+//         cout<<newHead->data<<" ";
+//         newHead = newHead->next;
 //     }
-    
-//     for (int i = 0; i<eq.length(); i++)
-//     {
-//         if (eq[i] == "(")
-//     }
-// }
+//     cout<<endl;
